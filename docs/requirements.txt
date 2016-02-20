@@ -1,0 +1,7 @@
+Django==1.6.2
+South==1.0.2
+django-cache-utils==0.7.2
+django-cacheops==2.3
+
+ipdb==0.8.3
+ipython==4.1.1
