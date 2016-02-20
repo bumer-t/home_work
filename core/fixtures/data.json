@@ -1,0 +1,42 @@
+[
+{
+    "pk": 1, 
+    "model": "core.data", 
+    "fields": {
+        "data": "1", 
+        "user": [
+            1
+        ]
+    }
+},
+{
+    "pk": 2, 
+    "model": "core.data", 
+    "fields": {
+        "data": "", 
+        "user": [
+            1
+        ]
+    }
+},
+{
+    "pk": 3, 
+    "model": "core.data", 
+    "fields": {
+        "data": "", 
+        "user": [
+            3
+        ]
+    }
+},
+{
+    "pk": 4, 
+    "model": "core.data", 
+    "fields": {
+        "data": "3", 
+        "user": [
+            4
+        ]
+    }
+}
+]
