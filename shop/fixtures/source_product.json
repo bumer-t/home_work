@@ -1,0 +1,22 @@
+[
+{
+    "pk": 1, 
+    "model": "shop.sourceproduct", 
+    "fields": {
+        "amount_tax": "0", 
+        "source": true, 
+        "changed": "2016-02-21T10:17:21.107Z", 
+        "created": "2016-02-21T10:17:21.107Z"
+    }
+},
+{
+    "pk": 2, 
+    "model": "shop.sourceproduct", 
+    "fields": {
+        "amount_tax": "5", 
+        "source": false, 
+        "changed": "2016-02-21T10:17:27.128Z", 
+        "created": "2016-02-21T10:17:27.128Z"
+    }
+}
+]

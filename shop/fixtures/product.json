@@ -1,0 +1,110 @@
+[
+{
+    "pk": 4820024700011, 
+    "model": "shop.product", 
+    "fields": {
+        "product_type": 1, 
+        "name": "book #1", 
+        "created": "2016-02-21T10:18:26.408Z", 
+        "changed": "2016-02-21T10:18:26.408Z", 
+        "source": 1, 
+        "amount": "12.49"
+    }
+},
+{
+    "pk": 4820024700012, 
+    "model": "shop.product", 
+    "fields": {
+        "product_type": 5, 
+        "name": "music CD", 
+        "created": "2016-02-21T10:18:47.025Z", 
+        "changed": "2016-02-21T10:18:47.025Z", 
+        "source": 1, 
+        "amount": "14.99"
+    }
+},
+{
+    "pk": 4820024700013, 
+    "model": "shop.product", 
+    "fields": {
+        "product_type": 2, 
+        "name": "chocolate bar", 
+        "created": "2016-02-21T10:19:06.756Z", 
+        "changed": "2016-02-21T10:19:06.756Z", 
+        "source": 1, 
+        "amount": "0.85"
+    }
+},
+{
+    "pk": 4820024700014, 
+    "model": "shop.product", 
+    "fields": {
+        "product_type": 2, 
+        "name": "box of chocolates #1", 
+        "created": "2016-02-21T10:19:26.452Z", 
+        "changed": "2016-02-21T10:19:26.452Z", 
+        "source": 2, 
+        "amount": "10"
+    }
+},
+{
+    "pk": 4820024700015, 
+    "model": "shop.product", 
+    "fields": {
+        "product_type": 4, 
+        "name": "bottle of perfume #1", 
+        "created": "2016-02-21T10:19:48.096Z", 
+        "changed": "2016-02-21T10:19:48.096Z", 
+        "source": 2, 
+        "amount": "47.5"
+    }
+},
+{
+    "pk": 4820024700016, 
+    "model": "shop.product", 
+    "fields": {
+        "product_type": 4, 
+        "name": "bottle of perfume #2", 
+        "created": "2016-02-21T10:20:16.530Z", 
+        "changed": "2016-02-21T10:20:16.530Z", 
+        "source": 2, 
+        "amount": "27.99"
+    }
+},
+{
+    "pk": 4820024700017, 
+    "model": "shop.product", 
+    "fields": {
+        "product_type": 4, 
+        "name": "box of chocolates #3", 
+        "created": "2016-02-21T10:20:38.985Z", 
+        "changed": "2016-02-21T10:20:38.985Z", 
+        "source": 1, 
+        "amount": "18.99"
+    }
+},
+{
+    "pk": 4820024700018, 
+    "model": "shop.product", 
+    "fields": {
+        "product_type": 3, 
+        "name": "packet of headache pills", 
+        "created": "2016-02-21T10:20:59.132Z", 
+        "changed": "2016-02-21T10:20:59.132Z", 
+        "source": 1, 
+        "amount": "9.75"
+    }
+},
+{
+    "pk": 4820024700019, 
+    "model": "shop.product", 
+    "fields": {
+        "product_type": 2, 
+        "name": "box of chocolates #2", 
+        "created": "2016-02-21T10:21:23.640Z", 
+        "changed": "2016-02-21T10:21:23.640Z", 
+        "source": 2, 
+        "amount": "11.25"
+    }
+}
+]

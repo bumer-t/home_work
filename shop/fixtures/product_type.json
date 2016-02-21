@@ -1,0 +1,52 @@
+[
+{
+    "pk": 1, 
+    "model": "shop.producttype", 
+    "fields": {
+        "amount_tax": "0", 
+        "changed": "2016-02-21T09:11:59.480Z", 
+        "name": "books", 
+        "created": "2016-02-21T09:11:59.480Z"
+    }
+},
+{
+    "pk": 2, 
+    "model": "shop.producttype", 
+    "fields": {
+        "amount_tax": "0", 
+        "changed": "2016-02-21T09:12:37.530Z", 
+        "name": "food", 
+        "created": "2016-02-21T09:12:37.530Z"
+    }
+},
+{
+    "pk": 3, 
+    "model": "shop.producttype", 
+    "fields": {
+        "amount_tax": "0", 
+        "changed": "2016-02-21T09:12:52.855Z", 
+        "name": " medicines", 
+        "created": "2016-02-21T09:12:52.855Z"
+    }
+},
+{
+    "pk": 4, 
+    "model": "shop.producttype", 
+    "fields": {
+        "amount_tax": "10", 
+        "changed": "2016-02-21T09:13:08.713Z", 
+        "name": "perfume", 
+        "created": "2016-02-21T09:13:08.713Z"
+    }
+},
+{
+    "pk": 5, 
+    "model": "shop.producttype", 
+    "fields": {
+        "amount_tax": "10", 
+        "changed": "2016-02-21T09:20:37.791Z", 
+        "name": "audio", 
+        "created": "2016-02-21T09:20:37.791Z"
+    }
+}
+]
