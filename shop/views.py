@@ -1,19 +1,31 @@
 # -*- coding: utf-8 -*-
-import json
-from django.http.response import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
+from shop.consts.request_params import REQ_CREATE_ORDER
+from core.decorators.request_decorators import api_view_500
+from core.tools.response_helper import response_error, response_success
+from shop.forms import OrderCreateForm
 from shop.models import Product, Order
 
 
-@require_GET
+@require_POST
+@api_view_500()
 @csrf_exempt
-def create(request):
+def create_order(request):
+    
+    form = OrderCreateForm(request.POST)
+    if not form.is_valid():
+        return response_error('%s' % form.errors,)
 
-    products_id = [4820024700011, 4820024700012]
-    products = Product.objects.filter(id__in=products_id)
+    Order().create_order(form.cleaned_data[REQ_CREATE_ORDER.PRODUCTS_ID])
 
-    order = Order().create_order(products)
+    params = {'status': 'created'}
+    return response_success(params=params)
 
-    params = {'status': 'create'}
-    return HttpResponse(json.dumps(params), 'application/json')
+
+@require_GET
+@api_view_500()
+@csrf_exempt
+def products_list(request):
+    params = {'products': [p.output for p in Product.objects.all()]}
+    return response_success(params=params)

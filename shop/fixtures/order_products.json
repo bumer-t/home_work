@@ -1,0 +1,74 @@
+[
+{
+    "pk": 1, 
+    "model": "shop.order_products", 
+    "fields": {
+        "product": 4820024700011, 
+        "order": 1
+    }
+},
+{
+    "pk": 2, 
+    "model": "shop.order_products", 
+    "fields": {
+        "product": 4820024700012, 
+        "order": 1
+    }
+},
+{
+    "pk": 3, 
+    "model": "shop.order_products", 
+    "fields": {
+        "product": 4820024700013, 
+        "order": 1
+    }
+},
+{
+    "pk": 4, 
+    "model": "shop.order_products", 
+    "fields": {
+        "product": 4820024700014, 
+        "order": 2
+    }
+},
+{
+    "pk": 5, 
+    "model": "shop.order_products", 
+    "fields": {
+        "product": 4820024700015, 
+        "order": 2
+    }
+},
+{
+    "pk": 6, 
+    "model": "shop.order_products", 
+    "fields": {
+        "product": 4820024700016, 
+        "order": 3
+    }
+},
+{
+    "pk": 7, 
+    "model": "shop.order_products", 
+    "fields": {
+        "product": 4820024700017, 
+        "order": 3
+    }
+},
+{
+    "pk": 8, 
+    "model": "shop.order_products", 
+    "fields": {
+        "product": 4820024700018, 
+        "order": 3
+    }
+},
+{
+    "pk": 9, 
+    "model": "shop.order_products", 
+    "fields": {
+        "product": 4820024700019, 
+        "order": 3
+    }
+}
+]
