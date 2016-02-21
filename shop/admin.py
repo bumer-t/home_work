@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
+from django import forms
 from django.contrib import admin
-from shop.models import ProductType, Product, SourceProduct
+from django.core.exceptions import ValidationError
+from django.contrib.admin.widgets import FilteredSelectMultiple
+from shop.models import ProductType, Product, SourceProduct, Order
 
 
 class ProductTypeAdmin(admin.ModelAdmin):
@@ -25,6 +28,34 @@ class ProductAdmin(admin.ModelAdmin):
         return obj.total_amount
 
 
+class OrderForm(forms.ModelForm):
+
+    products = forms.ModelMultipleChoiceField(
+        queryset=Product.objects.all(),
+        required=False,
+        widget=FilteredSelectMultiple("products", False, attrs={'rows': '10'})
+    )
+
+    class Meta:
+        model   = Order
+        fields  = ['products', 'amount', 'tax_amount']
+
+
+class OrdersAdmin(admin.ModelAdmin):
+    list_per_page   = 20
+    form            = OrderForm
+    list_display    = ('products_custom', 'created', 'changed', 'amount', 'tax_amount')
+    # readonly_fields = ['amount', 'tax_amount']
+    list_filter = ('products__product_type', 'products__source',)
+
+    def products_custom(self, object):
+        return object.products_str('<br>')
+
+    products_custom.short_description   = u'Заказ'
+    products_custom.allow_tags          = True
+
+
 admin.site.register(ProductType, ProductTypeAdmin)
 admin.site.register(SourceProduct, SourceProductAdmin)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(Order, OrdersAdmin)

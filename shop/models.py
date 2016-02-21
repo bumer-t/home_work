@@ -65,5 +65,34 @@ class Product(DateCreatedChanged):
         return u'%s_%s' % (self.id, self.name)
 
     @property
+    def total_tax(self):
+        return self.product_type.get_tax(self.amount) + self.source.get_tax(self.amount)
+
+    @property
     def total_amount(self):
-        return float(self.amount) + self.product_type.get_tax(self.amount) + self.source.get_tax(self.amount)
+        return float(self.amount) + self.total_tax
+
+
+class Order(DateCreatedChanged):
+    # client
+    products = models.ManyToManyField(Product, related_name="%(app_label)s_%(class)s_products")
+    amount      = models.DecimalField('∑', max_digits=10, decimal_places=2, help_text=u'Из админки , данное поле необходимо заполнить вручную')
+    tax_amount  = models.DecimalField('∑ Налога', max_digits=10, decimal_places=2, help_text=u'Из админки, данное поле необходимо заполнить вручную')
+
+    class Meta:
+        ordering            = ['-created']
+        app_label           = 'shop'
+        verbose_name_plural = u'Заказы'
+
+    def products_str(self, separator=''):
+        return separator.join(unicode(x) for x in self.products.all())
+
+    def create_order(self, products):
+        """
+        :type products_id: list
+        """
+        order = Order()
+        order.amount = sum([i.total_amount for i in products])
+        order.tax_amount = sum([i.total_tax for i in products])
+        order.save()
+        order.products.add(*products)
