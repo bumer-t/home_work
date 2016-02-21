@@ -71,7 +71,7 @@ class Product(DateCreatedChanged):
 
     @property
     def total_amount(self):
-        return float(self.amount) + self.total_tax
+        return round(float(self.amount) + self.total_tax, 2)
 
     @property
     def output(self):
@@ -88,8 +88,8 @@ class Product(DateCreatedChanged):
 class Order(DateCreatedChanged):
     # client
     products    = models.ManyToManyField(Product, related_name="%(app_label)s_%(class)s_products")
-    amount      = models.DecimalField('∑', max_digits=10, decimal_places=2, help_text=u'Из админки , данное поле необходимо заполнить вручную')
-    tax_amount  = models.DecimalField('∑ Налога', max_digits=10, decimal_places=2, help_text=u'Из админки, данное поле необходимо заполнить вручную')
+    amount      = models.DecimalField('∑', max_digits=10, decimal_places=2, help_text=u'Если поле заполняются из админки, необходимо заполнить вручную')
+    tax_amount  = models.DecimalField('∑ Налога', max_digits=10, decimal_places=2, help_text=u'Если поле заполняются из админки, необходимо заполнить вручную')
 
     class Meta:
         ordering            = ['-created']
@@ -108,3 +108,11 @@ class Order(DateCreatedChanged):
         order.tax_amount = sum([i.total_tax for i in products])
         order.save()
         order.products.add(*products)
+
+    @property
+    def output(self):
+        return {
+                'amount'        : float(self.amount),
+                'tax_amount'    : float(self.tax_amount),
+                'products'      : sorted([p.output for p in self.products.all()], key=lambda k: k['id'])
+        }

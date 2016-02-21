@@ -5,7 +5,7 @@ from core.tools.orders import products_count_amount
 from django import forms
 from django.core.exceptions import ValidationError
 from shop.consts.request_params import REQ_CREATE_ORDER
-from shop.models import Product
+from shop.models import Product, Order
 
 
 class OrderCreateForm(forms.Form):
@@ -34,3 +34,14 @@ class OrderCreateForm(forms.Form):
         products = cleaned_data[REQ_CREATE_ORDER.PRODUCTS_ID]
         if float(amount) != products_count_amount(products):
             raise ValidationError(u'переоценка')
+
+
+class OrderViewForm(forms.Form):
+    order_id = forms.IntegerField(min_value=0, max_value=99999999, required=True, help_text=u'id заказа')
+
+    def clean_order_id(self):
+        order_id = self.cleaned_data['order_id']
+        try:
+            return Order.objects.get(id=order_id) #client
+        except Order.DoesNotExist:
+            raise ValidationError(u'не верный ID')
