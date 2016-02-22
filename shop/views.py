@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from django.shortcuts import render_to_response
+from django.template.context import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
 from shop.consts.request_params import REQ_CREATE_ORDER
@@ -41,3 +43,10 @@ def view_order(request, order_id):
         return response_error('%s' % form.errors,)
 
     return response_success(params={'order': form.cleaned_data['order_id'].output})
+
+
+def main_view_shop(request):
+    params = {'ORDERS_ID' : [i.id for i in Order.objects.all()]}
+    request_context = RequestContext(request)
+    response = render_to_response('shop_index.html', params, context_instance=request_context)
+    return response

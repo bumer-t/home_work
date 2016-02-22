@@ -61,6 +61,7 @@ WSGI_APPLICATION = 'wsgi.application'
 
 TEMPLATE_DIRS = (
     os.path.join(ROOT_PATH, 'core/templates/'),
+    os.path.join(ROOT_PATH, 'shop/templates/'),
 )
 
 

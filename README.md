@@ -7,7 +7,6 @@ source virtenv/bin/activate
 pip install -r docs/requirements.txt
 
 
-python manage.py syncdb
-python manage.py migrate
-
-
+#Бд под гитом (db_sqlite3), admin@admin
+#python manage.py syncdb
+#python manage.py migrate

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOP</title>
+</head>
+<body>
+    <p><a href="{% url 'products_list' %}">List of all products</a></p>
+
+    <ul>
+    {% for i in ORDERS_ID %}
+        <li><a href="{% url 'view_order' order_id=i %}">Order {{ i }}</a></li>
+    {% endfor %}
+    </ul>
+
+    <p>Create order (POST:{"products_id":"["4820024700016","4820024700017","4820024700018","4820024700019"]","amount":74.64})</p>
+</body>
+</html>
