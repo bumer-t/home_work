@@ -4,7 +4,7 @@ from django.db import models
 from django.utils.encoding import smart_str
 from django.core.exceptions import ValidationError
 from core.models import DateCreatedChanged
-from core.tools.orders import products_count_amount
+from core.tools.orders import products_count_amount, products_count_tax
 from shop.consts.product import SOURCE
 
 
@@ -88,8 +88,8 @@ class Product(DateCreatedChanged):
 class Order(DateCreatedChanged):
     # client
     products    = models.ManyToManyField(Product, related_name="%(app_label)s_%(class)s_products")
-    amount      = models.DecimalField('∑', max_digits=10, decimal_places=2, help_text=u'Если поле заполняются из админки, необходимо заполнить вручную')
-    tax_amount  = models.DecimalField('∑ Налога', max_digits=10, decimal_places=2, help_text=u'Если поле заполняются из админки, необходимо заполнить вручную')
+    amount      = models.DecimalField('∑', max_digits=10, decimal_places=2)
+    tax_amount  = models.DecimalField('∑ Налога', max_digits=10, decimal_places=2)
 
     class Meta:
         ordering            = ['-created']
@@ -104,8 +104,8 @@ class Order(DateCreatedChanged):
         :type products_id: list
         """
         order = Order()
-        order.amount = products_count_amount(products)
-        order.tax_amount = sum([i.total_tax for i in products])
+        order.amount        = products_count_amount(products)
+        order.tax_amount    = products_count_tax(products)
         order.save()
         order.products.add(*products)
 

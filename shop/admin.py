@@ -3,6 +3,7 @@ from django import forms
 from django.contrib import admin
 from django.core.exceptions import ValidationError
 from django.contrib.admin.widgets import FilteredSelectMultiple
+from core.tools.orders import products_count_amount, products_count_tax
 from shop.models import ProductType, Product, SourceProduct, Order
 
 
@@ -39,6 +40,27 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model   = Order
         fields  = ['products', 'amount', 'tax_amount']
+        
+    def clean(self):
+        super(OrderForm, self).clean()
+        cleaned_data = self.cleaned_data
+        products    = cleaned_data.get('products')
+        amount      = cleaned_data.get('amount')
+        tax_amount  = cleaned_data.get('tax_amount')
+
+        if self.errors:
+            raise ValidationError(self.errors)
+
+        total_amount    = products_count_amount(products)
+        total_tax       = products_count_tax(products)
+
+        if total_amount != round(float(amount), 2):
+            raise ValidationError(u'Общая сумма не совпадает (%s)' % total_amount)
+
+        if total_tax != round(float(tax_amount), 2):
+            raise ValidationError(u'Общая налога не совпадает (%s)' % total_tax)
+
+        return cleaned_data
 
 
 class OrdersAdmin(admin.ModelAdmin):
