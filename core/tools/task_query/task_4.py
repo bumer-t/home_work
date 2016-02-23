@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from core.tools.tasks import TASK_NUMBER_4
 from core.models import Data, User2
-from core.tools.tasks.task_abstract import TaskAbstract
+from core.tools.task_query import TASK_NUMBER_4
+from core.tools.task_query.task_abstract import TaskAbstract
 
 
 class Task4(TaskAbstract):

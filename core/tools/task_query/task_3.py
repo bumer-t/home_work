@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.db.models.aggregates import Count
 from core.models import User
-from core.tools.tasks import TASK_NUMBER_3
-from core.tools.tasks.task_abstract import TaskAbstract
+from core.tools.task_query import TASK_NUMBER_3
+from core.tools.task_query.task_abstract import TaskAbstract
 
 
 class Task3(TaskAbstract):
