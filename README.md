@@ -4,6 +4,6 @@
   - pip install -r docs/requirements.txt
 
 
-  - #Бд под гитом (db_sqlite3), admin@admin
+  - #db под гитом (db_sqlite3), admin@admin
   - #python manage.py syncdb
   - #python manage.py migrate
