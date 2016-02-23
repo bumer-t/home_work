@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 class CoderMixIn(object):
 
     tree_list   = []
@@ -8,10 +9,9 @@ class CoderMixIn(object):
 
     def serialize(self):
         if self.tree_list:
-            return self.tree_list
+            return str(self.tree_list)
         self.preorder()
-        self.tree_list = str(self.tree_list)
-        return self.tree_list
+        return str(self.tree_list)
 
     def add_left(self,new_node):
         if self.left is None:
@@ -51,7 +51,7 @@ class CoderMixIn(object):
     @classmethod
     def decode(self, tree_str):
         object = None
-        for i, elem in enumerate(tree_str):
+        for i, elem in enumerate(eval(tree_str)):
             if i == 0:
                 object = Node(elem[0])
                 continue
@@ -64,7 +64,6 @@ class Node(CoderMixIn):
         self.value  = key_value
         self.left   = None
         self.right  = None
-
 
 
 class TreeHelper(object):
