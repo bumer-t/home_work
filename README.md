@@ -1,12 +1,9 @@
-# home_work
-home_work
+
+  - virtualenv virtenv
+  - source virtenv/bin/activate
+  - pip install -r docs/requirements.txt
 
 
-virtualenv virtenv
-source virtenv/bin/activate
-pip install -r docs/requirements.txt
-
-
-#Бд под гитом (db_sqlite3), admin@admin
-#python manage.py syncdb
-#python manage.py migrate
+  - #Бд под гитом (db_sqlite3), admin@admin
+  - #python manage.py syncdb
+  - #python manage.py migrate
