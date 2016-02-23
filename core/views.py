@@ -26,6 +26,13 @@ def task_query(request, task_id):
 @require_GET
 @csrf_exempt
 def task_1(request):
+    """
+            a
+          /  \
+        b     c
+      /  \      \
+    d    e       f
+    """
     helper_tree = TreeHelper()
     tree = helper_tree.create()
     print_1 = helper_tree.print_values(t=tree, slug='PRINT_1')
